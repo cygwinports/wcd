@@ -1,0 +1,19 @@
+DESCRIPTION="Wherever Change Directory"
+HOMEPAGE="http://wcd.sourceforge.net/"
+SRC_URI="http://easynews.dl.sourceforge.net/${PN}/${P}-src.tar.gz"
+
+src_compile() {
+	lndirs
+	cd ${B}
+	rm -f Makefile
+	ln -sf Makefile.ncurses.cygwin Makefile
+	cygmake -j1
+}
+
+src_install() {
+	cd ${B}
+	dobin wcd.exe
+	cd ${S}
+	doman wcd.1
+	dodoc *.txt *.pdf *.ps
+}

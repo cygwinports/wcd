@@ -1,0 +1,82 @@
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/Makefile.ncurses.cygwin wcd-3.2.1/Makefile.ncurses.cygwin
+--- wcd-3.2.1-orig/Makefile.ncurses.cygwin	2005-09-15 02:05:04.000000000 -0500
++++ wcd-3.2.1/Makefile.ncurses.cygwin	2006-05-08 19:39:53.592000000 -0500
+@@ -12,7 +12,7 @@
+ # dynamically) comment the LFLAGS line and add the 'libncurses.a' file
+ # (often found as /usr/lib/libncurses.a) to the OBJS1 list.
+ 
+-CFLAGS	= -O -Wall -Ic3po $(NCFLAG)
++CFLAGS	= -O2 -pipe -Wall -Ic3po $(NCFLAG)
+ LFLAGS  = -lncurses -lmpr $(NLFLAG)
+ DEFS    = -DUNIX -DWCD_USECURSES
+ OBJS1	= \
+@@ -44,5 +44,5 @@
+ 
+ 
+ clean:
+-	/bin/rm *.o *.bck *.bak *.exe
++	/bin/rm -f *.o *.bck *.bak *.exe
+ 
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/stack.c wcd-3.2.1/stack.c
+--- wcd-3.2.1-orig/stack.c	2006-01-04 14:15:52.000000000 -0600
++++ wcd-3.2.1/stack.c	2006-05-08 19:37:50.404500000 -0500
+@@ -86,7 +86,7 @@
+ 			{
+ 			int len ;
+ 			/* read a line */
+-			len = getline(tmp,DD_MAXPATH,infile);
++			len = wcd_getline(tmp,DD_MAXPATH,infile);
+ 
+ 			if (len > 0 )
+ 				addToWcdStackDir(textNew(tmp), ws);
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/wcd.c wcd-3.2.1/wcd.c
+--- wcd-3.2.1-orig/wcd.c	2006-01-04 14:15:52.000000000 -0600
++++ wcd-3.2.1/wcd.c	2006-05-08 19:37:32.357625000 -0500
+@@ -1161,7 +1161,7 @@
+  *          minating `\0' character.
+  ********************************************************************/
+ 
+-int getline(char s[], int lim, FILE* infile)
++int wcd_getline(char s[], int lim, FILE* infile)
+ {
+    int c, i ;
+ 
+@@ -1197,7 +1197,7 @@
+       while (!feof(infile) )
+       {
+          /* read a line */
+-         len = getline(path,DD_MAXPATH,infile);
++         len = wcd_getline(path,DD_MAXPATH,infile);
+ 
+          if (len > 0 )
+          {
+@@ -1367,7 +1367,7 @@
+       int len;
+ 
+       /* read a line */
+-      len = getline(line,DD_MAXPATH,infile);
++      len = wcd_getline(line,DD_MAXPATH,infile);
+ 
+       if (line)
+          cleanPath(line,len,1) ;
+@@ -1464,7 +1464,7 @@
+          while ((line[0]=getc(infile)) == ' '){};
+ 
+          /* read a line */
+-         len = getline(line+1,DD_MAXPATH,infile);
++         len = wcd_getline(line+1,DD_MAXPATH,infile);
+          len++;
+ 
+          if (len > 0 )
+diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/wcd.h wcd-3.2.1/wcd.h
+--- wcd-3.2.1-orig/wcd.h	2006-04-05 16:12:49.000000000 -0500
++++ wcd-3.2.1/wcd.h	2006-05-08 19:37:20.232625000 -0500
+@@ -100,7 +100,7 @@
+ int  strcompare(const char*, const char*, int);
+ void printhelp(void);
+ int  wcd_get_int(void);
+-int getline(char s[], int lim, FILE* infile);
++int wcd_getline(char s[], int lim, FILE* infile);
+ int wcd_exit(nameset pm, nameset wm, nameset ef, nameset bd, nameset nfs, WcdStack ws, nameset excl);
+ void getCurPath(char *buffer, int size, int *use_HOME);
+ 
