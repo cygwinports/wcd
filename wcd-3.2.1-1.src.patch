@@ -1,4 +1,3 @@
-diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/Makefile.ncurses.cygwin wcd-3.2.1/Makefile.ncurses.cygwin
 --- wcd-3.2.1-orig/Makefile.ncurses.cygwin	2005-09-15 02:05:04.000000000 -0500
 +++ wcd-3.2.1/Makefile.ncurses.cygwin	2006-05-08 19:39:53.592000000 -0500
 @@ -12,7 +12,7 @@
@@ -17,7 +16,6 @@ diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depco
 -	/bin/rm *.o *.bck *.bak *.exe
 +	/bin/rm -f *.o *.bck *.bak *.exe
  
-diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/stack.c wcd-3.2.1/stack.c
 --- wcd-3.2.1-orig/stack.c	2006-01-04 14:15:52.000000000 -0600
 +++ wcd-3.2.1/stack.c	2006-05-08 19:37:50.404500000 -0500
 @@ -86,7 +86,7 @@
@@ -29,7 +27,6 @@ diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depco
  
  			if (len > 0 )
  				addToWcdStackDir(textNew(tmp), ws);
-diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/wcd.c wcd-3.2.1/wcd.c
 --- wcd-3.2.1-orig/wcd.c	2006-01-04 14:15:52.000000000 -0600
 +++ wcd-3.2.1/wcd.c	2006-05-08 19:37:32.357625000 -0500
 @@ -1161,7 +1161,7 @@
@@ -68,7 +65,6 @@ diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depco
           len++;
  
           if (len > 0 )
-diff -urN -x CYGWIN-PATCHES -x 'aclocal.m4*' -x ltmain.sh -x 'config.*' -x depcomp -x install-sh -x missing -x mkinstalldirs -x autom4te.cache -x '*compile' -x 'intltool*.in' -x 'xml-i18n-*.in' -x '*.pyc' -x '*.mo' -x '*.gmo' -x ABOUT-NLS -x Makevars.template -x COPYING -x INSTALL -x '*.orig' -x '*.rej' -x '*~' -x '*.temp' wcd-3.2.1-orig/wcd.h wcd-3.2.1/wcd.h
 --- wcd-3.2.1-orig/wcd.h	2006-04-05 16:12:49.000000000 -0500
 +++ wcd-3.2.1/wcd.h	2006-05-08 19:37:20.232625000 -0500
 @@ -100,7 +100,7 @@
