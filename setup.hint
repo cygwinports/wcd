@@ -1,5 +1,5 @@
 category: Utils
-requires: cygwin libncurses8
+requires: libncurses8
 sdesc: "Wherever Change Directory"
 ldesc: "Wherever Change Directory allows you to change to a directory 
 by its name without specifying its path."
